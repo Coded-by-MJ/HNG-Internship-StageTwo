@@ -1,0 +1,82 @@
+
+
+{
+
+ "books": [
+     {
+        "id": 1,
+        "title": "Wilde in Love",
+        "genre": "Romance",
+        "price":  15000,
+        "src": "/images/wilde.png"
+    },
+    {
+        "id": 2,
+        "title": "Solar Bones",
+        "genre": "Horror",
+        "price":  15000,
+        "src": "/images/solar.png"
+
+    },
+      {
+         "id": 3,
+        "title": "Jaws",
+        "genre": "Thriller",
+        "price":  15000,
+        "src": "/images/jaws.png"
+    },
+     {
+        "id": 4,
+        "title": "The Last Watch",
+        "genre": "Adventure",
+        "price":  15000,
+        "src": "/images/watch.png"
+    },
+    {
+        "id": 5,
+        "title": "Enchanting Dragon Lord",
+        "genre": "Fantasy",
+        "price":  15000,
+        "src": "/images/dragon.png"
+   
+    },
+     {
+         "id": 6,
+        "title": "Thread",
+        "genre": "Horror",
+        "price":  15000,
+        "src": "/images/thread.png"
+   
+    }, {
+         "id": 7,
+        "title": "Harry Potter",
+        "genre": "Adventure",
+        "price":  15000,
+        "src": "/images/harry.png"
+   
+    }, {
+         "id": 8,
+        "title": "Spirit Demon",
+        "genre": "Fantasy",
+        "price":  15000,
+        "src": "/images/demon.png"
+   
+    }, {
+         "id": 9,
+        "title": "Memory",
+        "genre": "Romance",
+        "price":  15000,
+        "src": "/images/memory.png"
+   
+    }, {
+         "id": 10,
+        "title": "Unsee Lie",
+        "genre": "Thriller",
+        "price":  15000,
+        "src": "/images/unsee.png"
+   
+    }
+
+ ]
+   
+}

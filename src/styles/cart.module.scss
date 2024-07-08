@@ -1,0 +1,676 @@
+$fontKod:  "Kodchasan", sans-serif;
+$fontLaila:  "Laila", serif;
+
+$white: #F9F6FB;
+$secondary: #BBB6BD;
+$primary:  #3B2D3E;
+$gray: #AC9BAF;
+$black: #2A192B;
+
+
+
+/*typography*/
+
+%laila{
+    font-weight: 800;
+    font-family: $fontLaila;
+    font-size: 3rem;
+}
+
+%koda{
+    font-weight: 400;
+    font-family: $fontKod;
+    font-size: 1rem;
+}
+
+
+%baseFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+ }
+ 
+ %baseBtn {
+     outline: 0;
+     border: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+ }
+ 
+ %baseAnchor{
+     cursor: pointer;
+     text-decoration: none;
+ }
+ 
+
+
+
+
+
+
+
+
+.cart_wrapper{
+    @extend %baseFlex;
+    flex-direction: column;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 2px;
+    background-color: $white;
+    padding: 40px 80px;
+    justify-content: flex-start;
+}
+
+
+
+
+.price_wrapper{
+    @extend %baseFlex;
+    justify-content: space-between;
+    width: 100%;
+
+
+    .btn{
+        @extend %baseFlex;
+        justify-content: space-between;
+        height: 61px;
+        width: 219px;
+        border: 1px solid $gray;
+        padding: 12px;
+        border-radius: 2px;
+    }
+
+
+    .btn > span{
+        @extend %koda;
+        font-size: 1rem;
+        color: black;
+    }
+
+
+    .btn .num{
+        @extend %laila;
+        font-size: 1.5rem;
+    }
+
+
+
+}
+
+
+
+.cart_footer{
+   @extend %baseFlex;
+   flex-direction: column;
+   justify-content: flex-start;
+   width: 100%;
+    gap: 3px;
+
+
+   label{
+    @extend %koda;
+     width: 100%;
+     display: inline-block;
+     color: $black;
+     font-size: 1rem;
+
+   }
+}
+
+
+
+.checkout_wrap{
+  @extend %baseFlex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  & > span{
+    @extend %baseFlex;
+    @extend %koda;
+    width: 140px;
+    height: 40px;
+    padding: 10px 16px;
+    color: $primary;
+    border-radius: 2px;
+    border: 1px solid $primary;
+    font-size: 0.875rem;
+    color: $primary;
+  }
+
+
+
+}
+
+
+.action_btns{
+    @extend %baseFlex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 200px;
+    gap: 4px;
+
+    a{
+        @extend %baseAnchor;
+        @extend %baseFlex;
+        @extend %koda;
+        font-size: 0.875rem;
+        width: 100%;
+        padding: 10px 16px;
+        height: 40px;
+        color: $primary;
+        background-color: $secondary;
+        border: 1px solid $gray;
+        border-radius: 2px;
+        transition: all 0.2s ease-in;
+    }
+
+    a.check{
+        border: 0;
+        background-color: $primary;
+        color: $white;
+        position: relative;
+    }
+
+    a.check::after{
+        content: '';
+        width: 41px;
+        height: 0;
+        border: 1px solid $white;
+        position: absolute;
+        left: 50%;
+        top: 19px;
+        transform: rotate(90deg);
+
+    }
+
+
+   
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.input_wrap{
+  @extend %baseFlex;
+  justify-content: flex-start;
+  gap: 0;
+  height: 40px;
+
+  .field{
+    padding: 10px;
+    width: 410px;
+    height: 40px;
+    border: 1px solid $gray;
+
+  }
+
+  .field > input{
+    width: 200px;
+    border: 0;
+    @extend %koda;
+    font-size: 1rem;
+    outline: 0;
+    background: transparent;
+    color: $gray;
+  }
+
+
+  & > button{
+    @extend %baseBtn;
+    @extend %koda;
+    font-size: 0.875rem;
+    width: 160px;
+    height: 40px;
+    padding: 10px 16px;
+    color: $primary;
+    border-radius: 2px;
+    border: 1px solid $primary;
+    background-color: transparent;
+    transition: all 0.2s ease-in;
+
+  }
+}
+
+
+
+
+
+
+.order_wrap{
+    display: grid;
+    width: 100%;
+    grid-template-areas:
+    "details  qty  remove  txt"
+    "book   counter   x-icon   price"
+    ;
+
+
+  & > h3{
+        @extend %laila;
+        color: $black;
+        font-size: 1.5rem;
+        height: 61px;
+       
+    }
+
+
+    .details{
+        grid-area: details;
+        width: 265px;
+    }
+    .qty{
+        grid-area: qty;
+        width: 265px;
+        text-align: center;
+    }
+    .remove{
+        width: 159px;
+        grid-area: remove;
+        text-align: center;
+    }
+    .txt{
+        width: 159px;
+        grid-area: txt;
+        text-align: center;
+    }
+    
+
+}
+
+
+.counter{
+  grid-area: counter;
+  padding-top: 30px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid $gray;
+  border-top: 1px solid $gray;
+  @extend %baseFlex;
+  gap: 0;
+  
+
+  & > span{
+    @extend %laila;
+    @extend %baseFlex;
+    gap: 0;
+    color: $black;
+      border: 1px solid $gray;
+      
+      font-size: 1.5rem;
+      width: 48px;
+      height: 48px;
+      padding: 10px;
+  }
+
+  & > span.hl{
+     background-color: $secondary;
+     border-radius: 0 2px;
+    
+  }
+
+  span.hl:nth-child(1){
+    border-radius: 2px 0;
+  }
+}
+
+
+.x_icon{
+    grid-area: x-icon;
+    @extend %baseFlex;
+    gap: 0;
+    padding-top: 30px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid $gray;
+    border-top: 1px solid $gray;
+    
+  
+    & > span{
+      @extend %laila;
+      @extend %baseFlex;
+      gap: 0;
+      border: 1px solid $gray;
+      font-size: 1.5rem;
+      margin-right: 35px;
+      width: 48px;
+      height: 48px;
+      padding: 10px;
+
+    }
+
+
+}
+
+
+.price{
+    padding-top: 30px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid $gray;
+    border-top: 1px solid $gray;
+    grid-area: price;
+    @extend %baseFlex;
+    gap: 0;
+  
+    & > h3{
+      @extend %laila;
+      font-size: 1.5rem;
+      width: initial;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+.book_wrap{
+    height: 240px;
+    grid-area: book;
+    @extend %baseFlex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 30px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid $gray;
+    border-top: 1px solid $gray;
+
+
+    & > span{
+        @extend %baseFlex;
+        @extend %laila;
+        color: $black;
+        font-size: 1rem;
+        width: 137px;
+        height: 41px;
+        border-radius: 0 24px;
+        background-color: $gray;
+    }
+}
+
+
+
+.book_info{
+    @extend %baseFlex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 130px;
+    width: 300px;
+    gap: 8px;
+
+
+    .img{
+        width: 98px;
+        height: 130px;
+    }
+
+  .img >  img{
+       height: 100%;
+       width: 100%;
+       object-fit: cover;
+       object-position: 50% 100%;
+    }
+
+
+
+   .info{
+        @extend %baseFlex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 8px;
+        height: 100%;
+
+    }
+
+    .info > h3{
+        @extend %laila;
+        font-size: 1.5rem;
+        color: $black;
+        width: 195px;
+    }
+    
+    .info > h4{
+        @extend %laila;
+        font-size: 1rem;
+        color: $black;
+    }
+
+
+    .info > span{
+        @extend %koda;
+        font-size: 1rem;
+        color: $black;
+    }
+
+
+}
+
+
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .cart_wrapper{
+        padding: 40px 30px;
+    }
+
+    .book_wrap{
+        border-bottom: none;
+    }
+   
+
+    .price_wrapper, .checkout_wrap{
+       flex-wrap: wrap;
+    }
+
+    .order_wrap{
+        grid-template-areas: 
+        "details details details"
+        "book     book   book"
+        "qty     remove    txt"
+        "counter  x-icon   price "
+        ;
+
+
+        .qty, .remove{
+            text-align: left;
+        }
+
+        .txt{
+            text-align: right;
+        }
+    }
+
+    .counter, .x_icon{
+        justify-content: flex-start;
+        border-bottom: none;
+    }
+
+    .price{
+        border-bottom: none;
+
+    }
+}
+
+
+
+@media screen  and (max-width: 768px){
+
+    .cart_wrapper{
+        padding: 40px 10px;
+    }
+
+    .x_icon  > span{
+         margin-right: 0;
+    }
+
+    .book_wrap{
+        border-bottom: none;
+        & > span{
+            height: 34px;
+            width: 113px;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: $fontKod;
+        }
+    }
+
+
+    .order_wrap{
+        grid-template-columns: 1fr 80px 80px;
+        grid-template-areas: 
+        "details details details"
+        "book     book   book"
+        "qty     remove    txt"
+        "counter  x-icon   price "
+        ;
+
+
+        .qty, .remove{
+            text-align: left;
+            width: initial;
+        }
+
+        .txt{
+            text-align: right;
+            width: initial;
+        }
+    }
+
+    .counter, .x_icon{
+        justify-content: flex-start;
+        border-bottom: none;
+       
+    }
+
+    .price{
+        border-bottom: none;
+        justify-content: flex-end;
+
+    }
+
+    .price_wrapper, .checkout_wrap{
+        flex-wrap: wrap;
+     }
+
+     .order_wrap > h3{
+        font-size: 14px;
+        font-family: $fontKod;
+        font-weight: 400;
+        height: 20px;
+     }
+
+     .order_wrap > .details, .price > h3{
+        font-size: 1rem;
+     }
+
+     .x_icon > span, .counter > span{
+        height: 40px;
+        width: 40px;
+     }
+
+
+
+ .price_wrapper {
+    gap: 8px;
+   
+     .btn{
+      width: 160px;
+      height: 40px;
+      padding: 8px 4px;
+     }
+
+    .btn .num{
+          font-size: 1rem;
+    }
+
+     .btn > span{
+        font-size: 14px;
+     }
+
+   }
+
+
+   .checkout_wrap > span{
+     display: none;
+   }
+
+   .input_wrap{
+     width: 100%;
+   }
+
+   .book_info {
+    width: 225px;
+
+       .info{
+            width: 125px;
+            gap: 3px;
+            justify-content: center;
+        }
+
+       .info > h3{
+         font-size: 1rem;
+       }
+
+       .info > span{
+        font-size: 14px;
+      } 
+      
+      .info > span:last-child{
+        font-size: 12px;
+      } 
+
+      .info > h4{
+         font-family: $fontKod;
+         font-weight: 400;
+      }
+
+      .img{
+        width: 89px;
+      }
+ 
+
+}
+
+.action_btns{
+    width: 100%;
+
+    a.check::after{
+         left: 80%;
+    }
+
+    a{
+        background-color: transparent;
+        border: none;
+    }
+}
+
+
+a.check > svg{
+    position: absolute;
+    right: 10px;
+}
+
+
+
+}

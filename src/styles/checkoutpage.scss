@@ -1,0 +1,462 @@
+$fontKod:  "Kodchasan", sans-serif;
+$fontLaila:  "Laila", serif;
+
+$white: #F9F6FB;
+$secondary: #BBB6BD;
+$primary:  #3B2D3E;
+$gray: #AC9BAF;
+$black: #2A192B;
+
+
+
+
+%laila{
+    font-weight: 800;
+    font-family: $fontLaila;
+    font-size: 3rem;
+}
+
+%koda{
+    font-weight: 400;
+    font-family: $fontKod;
+    font-size: 1rem;
+}
+
+
+
+
+%baseFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+ }
+ 
+ %baseBtn {
+     outline: 0;
+     border: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+ }
+ 
+ %baseAnchor{
+     cursor: pointer;
+     text-decoration: none;
+ }
+ 
+
+
+
+
+
+.checkout_wrap{
+    @extend %baseFlex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 1rem;
+    position: relative;
+
+    h2{
+        @extend %laila;
+        font-size: 1.5rem;
+        color: $black;
+    }
+
+}
+
+
+
+.summary{
+    @extend %baseFlex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 24px 16px;
+    width: 348px;
+    border-radius: 2px;
+    background-color: $secondary;
+
+    & > .item, .sm-item{
+        @extend %baseFlex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .item > a{
+        @extend %koda;
+        font-size: 0.875rem;
+        cursor: pointer;
+        color: blue ;
+    }
+
+
+
+
+
+  .item:nth-child(2){
+        justify-content: flex-start;
+        flex-direction: column;
+        padding-bottom: 18px;
+        border-bottom: 1px solid gray;
+    }
+
+   .sm-item > span{
+    @extend %koda;
+    text-wrap: wrap;
+    display: inline-block;
+    color: $black;
+    max-width: 179px;
+    font-size: 1rem;
+   }
+
+   .item:nth-child(3) > span{
+    @extend %laila;
+    display: inline-block;
+    color: $black;
+    font-size: 1rem;
+   }
+
+
+
+
+
+}
+
+
+
+
+.form_wrapper{
+    @extend %baseFlex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    width: 395px;
+    padding: 24px 16px;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+}
+
+
+form, .form_elem{
+    @extend %baseFlex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+
+.form_elem{
+    gap: 4px;
+}
+
+
+.form_elem > label{
+    @extend %koda;
+    font-size: 1rem;
+    width: 100%;
+    color: $black;
+}
+
+.form_elem > input, .form_elem > .select{
+    height: 44px;
+    border-radius: 2px;
+    border: 1px solid $gray;
+    padding: 10px;
+    width: 100%;
+    color: $gray;
+    @extend %koda;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+
+.select{
+    @extend %baseFlex;
+    justify-content: space-between;
+
+    & > .down_icon{
+        width: 24px;
+        height: 24px;
+        color: $black;
+    }
+
+    select{
+        @extend %koda;
+        color: $gray;
+        border: 0;
+        background-color: transparent;
+        font-size: 1rem;
+        width: 100%;
+        appearance: none;
+    }
+}
+
+
+
+
+
+.payment_wrapper{
+    @extend %baseFlex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+    max-width: 368px;
+    padding: 24px 0;
+
+
+    .pay_btn{
+              @extend %baseBtn;
+              @extend %baseFlex;
+              @extend %koda;
+              border-radius: 2px;
+              font-size: 1rem;
+              color: $white;
+              background-color: $primary;
+              height: 40px;
+              width: 100%;
+              padding: 10px;
+    }
+
+
+    .payinfo_wrapper{
+        @extend %baseFlex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+}
+
+
+
+.pay_options{
+         @extend %baseFlex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+        width: 100%;
+
+
+        & > button{
+            @extend %baseBtn;
+            gap: 8px;
+            border-radius: 2px;
+            height: 40px;
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid $black;
+        }
+
+        &  span{
+             @extend %laila;
+             color: $black;
+             font-size: 1rem;
+             display: inline-block;
+        }
+
+}
+
+.seperator{
+    @extend %baseFlex;
+    @extend %koda;
+    width: 100%;
+    color: $black;
+    position: relative;
+    font-size: 0.875rem;
+
+    &::before, &::after{
+        content: '';
+        top: 50%;
+        position: absolute;
+        width: 113px;
+        height: 1px;
+        background-color: $gray;
+    }
+
+    &::before{
+        left: 0;
+    }
+
+    &::after{
+        right: 0;
+    }
+}
+
+
+
+
+.credit_info{
+    @extend %baseFlex;
+    width: 100%;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+   label{
+        @extend %koda;
+         width: 100%;
+         display: inline-block;
+    }
+
+    input{
+        @extend %koda;
+        background-color: transparent;
+        font-size: 1rem;
+        width: 100%;
+        cursor: pointer;
+        border: 0;
+        outline: 0;
+        appearance: none;
+    }
+
+    img{
+        width: 116px;
+    }
+
+  .card_field{
+        @extend %baseFlex;
+        width: 100%;
+       
+        justify-content: space-between;
+        gap: 0;
+        height: 44px;
+        cursor: pointer;
+  }
+
+  .card_field.acct{
+        border: 1px solid $gray;
+        border-radius: 2px;
+        padding: 10px;
+   }
+
+
+   .card_field > span{
+      @extend %baseFlex;
+      justify-content: flex-start;
+      border: 1px solid $gray;
+      border-radius: 2px;
+      height: 44px;
+      width: 180px;
+      padding: 10px;
+   }
+
+
+}
+
+
+
+.modal{
+    @extend %baseFlex;
+    border-radius: 2px;
+    background-color: $white;
+    width: 100%;
+    max-width: 450px;
+    position: absolute;
+    padding: 20px;
+    top: 0;
+    left: -100%;
+    z-index: 10;
+    opacity: 0;
+    transform: translateX(-50%);
+    animation: showModal 0.2s linear forwards;
+}
+
+.modal_body{
+    @extend %baseFlex;
+    flex-direction: column;
+    flex-direction: justify-content;
+     gap: 32px;
+
+
+     h2{
+        @extend %laila;
+        color: $black;
+        font-size: 32px;
+     }
+
+     p{
+        width: 100%;
+        max-width: 342px;
+        text-align: center;
+        @extend %koda;
+        font-size: 1rem;
+        color: $gray;
+        text-wrap: balance;
+     }
+
+     a{
+        @extend %baseAnchor;
+        @extend %baseFlex;
+        @extend %koda;
+        font-size: 1rem;
+        background-color: $primary;
+        padding: 10px;
+        height: 40px;
+        width: 300px;
+        color: $white;
+        border-radius: 2px;
+     }
+
+}
+
+
+
+
+@keyframes showModal {
+       to{
+           opacity: 1;
+           left: 50%;
+       }
+}
+
+
+@media screen and (max-width: 1024px){
+   .checkout_wrap{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+   }
+
+   .form_wrapper{
+     border: none;
+   }
+
+ 
+}
+
+@media screen and (max-width: 768px){
+     .summary{
+        width: 328px;
+     }
+
+     .form_wrapper, .payment_wrapper{
+        width: 300px;
+        padding: 0;
+     }
+
+     .seperator::before, .seperator::after{
+         width: 85px;
+     }
+
+     .checkout_wrap h2{
+        font-size: 1rem;
+     }
+
+     .checkout_wrap{
+        padding: 40px 10px;
+        gap: 1.5rem;
+     }
+}
+
+

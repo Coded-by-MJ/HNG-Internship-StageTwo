@@ -1,0 +1,315 @@
+$fontKod:  "Kodchasan", sans-serif;
+$fontLaila:  "Laila", serif;
+
+$white: #F9F6FB;
+$secondary: #BBB6BD;
+$primary:  #3B2D3E;
+$gray: #AC9BAF;
+$black: #2A192B;
+
+
+
+/*typography*/
+
+%laila{
+    font-weight: 800;
+    font-family: $fontLaila;
+    font-size: 3rem;
+}
+
+%koda{
+    font-weight: 400;
+    font-family: $fontKod;
+    font-size: 1rem;
+}
+
+
+
+%baseFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+ }
+ 
+ %baseBtn {
+     outline: 0;
+     border: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+ }
+ 
+ %baseAnchor{
+     cursor: pointer;
+     text-decoration: none;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.products_wrapper{
+    margin-top: 2rem;
+    width: 100%;
+    display: grid;
+    gap: 40px 35px;
+    grid-template-columns: repeat(auto-fill, 212px);
+    grid-template-rows: repeat(auto-fill, 321px);
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+
+}
+
+
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+}
+
+
+.book_image_wrap{
+    @extend %baseFlex;
+    border: 1px solid $gray;
+    border-radius: 2px;
+    padding: 3px;
+    width: 100%;
+    height: 224px;
+  
+}
+
+.book_image{
+    object-fit: contain;
+    object-position: 50% 100;
+    height: 200px;
+    width: 180px;
+}
+
+
+
+.card_details_wrap{
+    @extend %baseFlex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+
+.book_info{
+    @extend %baseFlex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+
+    & > h3{
+        @extend %laila;
+        font-size: 1rem;
+        color: #000;
+        line-height: 24.8px
+    }
+
+   & > span{
+     @extend %koda;
+     font-size: 0.75rem;
+      color: $primary;
+      line-height: 15.6px;
+   }
+}
+
+
+.price_wrap{
+    @extend %baseFlex;
+    justify-content: space-between;
+    width: 100%;
+
+
+    & > span{
+        @extend %koda;
+        font-size: 0.875rem;
+        line-height: 18.2px;
+        display: inline-block;
+        color: $primary;
+    }
+
+    & > button{
+        @extend %baseBtn;
+        @extend %koda;
+        padding: 10px;
+        width: 108px;
+        height: 40px;
+        border-radius: 2px;
+        background-color: $primary;
+        color: $white;
+        font-size: 0.875rem;
+        line-height: 18.2px;
+        transition: all 0.2s ease-in;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.dropdown_wrap{
+    width: 304px;
+    height: 44px;
+    border: 1px solid $gray;
+    border-radius: 2px;
+    padding: 10px 16px;
+    position: relative;
+    @extend %baseFlex;
+    justify-content: space-between;
+
+}
+
+
+.dropdown{
+       @extend %baseFlex;
+       width: 126px;
+       gap: 10px;
+       cursor: pointer;
+       justify-content: flex-start;
+
+
+    &.hl{
+        padding-right: 10px;
+        border: 1px solid transparent;
+        border-right-color: $gray;
+    }
+
+     
+    & > span{
+        @extend %koda;
+        display: inline-block;
+        font-size: 0.875rem;
+    }
+    
+    .arrowdown_icon{
+        height: 24px;
+        width: 24px;
+        color: $black;
+        transition: 0.2s ease-in-out;
+    }
+
+    &.show > .arrowdown_icon{
+            transform: rotate(180deg);
+
+    }
+
+}
+
+
+
+
+
+.droplist{
+    @extend %baseFlex;
+    @extend %koda;
+    align-items: flex-start;
+    cursor: pointer;
+    opacity: 0;
+    flex-direction: column;
+    list-style: none;
+    width: 126px;
+    color: $black;
+    padding: 16px;
+    font-size: 1rem;
+    gap: 10px;
+    position: absolute;
+    top: 45px;
+    border: 1px solid $gray ;
+    border-radius: 2px;
+    background-color: $white;
+    z-index: 5;
+    animation: show 0.2s linear forwards;
+
+
+    &.right{
+        right: 8px;
+    }
+     &.left{
+        left: 8px;
+    }
+
+}
+
+
+@keyframes show {
+       to{
+          opacity: 1;
+       }
+}
+
+
+
+
+
+
+
+
+
+@media screen  and (max-width: 768px){
+
+  .products_wrapper{
+     grid-template-columns: repeat(auto-fill, 325px);
+     grid-template-rows: repeat(auto-fill, 212px);
+     gap: 16px 20px;
+  }
+
+
+  .card{
+    border: 1px solid $gray;
+    flex-direction: row;
+    padding: 0 8px;
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  .book_image_wrap{
+    height: 212px;
+    width: 185px;
+    border: none;
+  }
+
+  .card_details_wrap{
+    width: 121px;
+    justify-content: center;
+  }
+
+  .price_wrap{
+     flex-direction: column;
+     align-items: flex-start;
+     justify-content: flex-start;
+  }
+
+
+  
+    
+}
+
+
+
