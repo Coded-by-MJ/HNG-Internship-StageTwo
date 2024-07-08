@@ -72,6 +72,7 @@ $black: #2A192B;
     @extend %baseFlex;
     justify-content: space-between;
     width: 100%;
+    flex-wrap: wrap;
 
 
     .btn{
@@ -127,6 +128,7 @@ $black: #2A192B;
   @extend %baseFlex;
   width: 100%;
   align-items: flex-start;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   & > span{
@@ -479,9 +481,7 @@ $black: #2A192B;
     }
    
 
-    .price_wrapper, .checkout_wrap{
-       flex-wrap: wrap;
-    }
+  
 
     .order_wrap{
         grid-template-areas: 
