@@ -258,6 +258,8 @@ body {
     h1{
         @extend %laila;
         font-size: 2rem;
+        color: $primary;
+        text-transform: capitalize;
     }
 
 
@@ -490,6 +492,17 @@ footer{
 }
 
 
+
+
+
+.spinner {
+    @extend %baseFlex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+   
+}
 
 
 

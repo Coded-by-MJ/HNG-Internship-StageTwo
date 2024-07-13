@@ -1,13 +1,10 @@
 import  { useState } from "react";
 
-const ProductCard = ({title, src, price, genre }) => {
+const ProductCard = (props) => {
 
-    const [disabled, setDisabled] = useState(false);
- 
-    const handleDisabled = () => {
-        setDisabled(prev => !prev);
-       
-    }
+
+   
+  console.log(props)
    
 
 
@@ -15,24 +12,23 @@ const ProductCard = ({title, src, price, genre }) => {
   return (
     <div className="card">
      <div  className="book_image_wrap" >
-            <img src={src} alt={title}></img>
+            <img src={props.imgPath} alt={props.name}></img>
        </div>
 
        <div className="card_details_wrap">
         <div className="book_info">
-            <h3>{title}</h3>
-            <span>Genre:  {genre}</span>
+            <h3>{props.name}</h3>
+            <span>Genre: {props.genre}</span>
         </div> 
             <div className="price_wrap">
                <span>
-                 #{price.toLocaleString()}
+                 #{props.price.toLocaleString()}
                </span>
 
                 <button 
-                    className={`addCart ${disabled ? 'disabled' : ''}`}
-                    onClick={handleDisabled}
+                    className={`addCart `}
                   >
-                      {disabled ? 'Remove from Cart' : 'Add to Cart'}
+                   Add to Cart
                 </button>
                 
                  
