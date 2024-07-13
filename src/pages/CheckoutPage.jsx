@@ -72,9 +72,11 @@ const CheckoutPage = () => {
   
     useEffect(()=>{
      const updateSummary = () => {
-        setSummaryCart(productsArr.filter(product => product.addToCart));
+         
+       const allItems = productsArr.filter(product => product.addToCart);
+       setSummaryCart(allItems);
 
-        const total = summaryCart.reduce((acc, product) => {
+        const total = allItems.reduce((acc, product) => {
           return acc + (product.quantityBought * product.price);
         }, 0);
         setTotalAmount(total);
