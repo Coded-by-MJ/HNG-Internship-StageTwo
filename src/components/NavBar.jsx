@@ -97,13 +97,7 @@ const NavBar = () => {
 
         
          <MobileMenu />
-       {/* <ul className="nav_links">
-          <li> <p>Story Books</p> </li>   
-           <li> <NavLink to="/" 
-            className={`addCart ${linkClass("/")}`}
-           >Novels</NavLink></li>    
-           <li> <p>Educational Books</p> </li>
-        </ul> */}
+  
 
         <Link
          to="/"
@@ -134,7 +128,7 @@ const NavBar = () => {
 
           <Link 
           to="/cart"
-           className="nav_cart">
+           className={`nav_cart ${count > 0 ? 'red' : ''}`}>
           <PiShoppingCartLight  className="cart_icon"/>
           <span>
            {count}

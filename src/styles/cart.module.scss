@@ -260,6 +260,8 @@ $black: #2A192B;
 .order_wrap{
     display: grid;
     width: 100%;
+    grid-template-columns: 1fr auto auto auto;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
     "details  qty  remove  txt"
     "book   counter   x-icon   price"
@@ -270,7 +272,8 @@ $black: #2A192B;
         @extend %laila;
         color: $black;
         font-size: 1.5rem;
-        height: 61px;
+        height: 50px;
+        
        
     }
 
@@ -301,8 +304,7 @@ $black: #2A192B;
 
 .counter{
   grid-area: counter;
-  padding-top: 30px;
-  padding-bottom: 26px;
+  padding: 10px 0;
   border-bottom: 1px solid $gray;
   border-top: 1px solid $gray;
   @extend %baseFlex;
@@ -315,7 +317,7 @@ $black: #2A192B;
     gap: 0;
     color: $black;
     border: 1px solid $gray;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     width: 48px;
     height: 48px;
     padding: 10px;
@@ -338,8 +340,7 @@ $black: #2A192B;
     grid-area: x-icon;
     @extend %baseFlex;
     gap: 0;
-    padding-top: 30px;
-    padding-bottom: 26px;
+    padding: 10px 0;
     border-bottom: 1px solid $gray;
     border-top: 1px solid $gray;
     
@@ -351,7 +352,6 @@ $black: #2A192B;
       gap: 0;
       border: 1px solid $gray;
       font-size: 1.5rem;
-      margin-right: 35px;
       width: 48px;
       height: 48px;
       padding: 10px;
@@ -363,8 +363,7 @@ $black: #2A192B;
 
 
 .price{
-    padding-top: 30px;
-    padding-bottom: 26px;
+    padding: 10px 0;
     border-bottom: 1px solid $gray;
     border-top: 1px solid $gray;
     grid-area: price;
@@ -389,15 +388,14 @@ $black: #2A192B;
 
 
 .book_wrap{
-    height: 240px;
+
     grid-area: book;
     @extend %baseFlex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 8px;
-    padding-top: 30px;
-    padding-bottom: 26px;
+    padding: 10px 0;
     border-bottom: 1px solid $gray;
     border-top: 1px solid $gray;
 
@@ -480,9 +478,10 @@ $black: #2A192B;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     max-height: 700px;
-    overflow-y: auto;
+    padding: 15px 0;
+    overflow: auto;
 }
 
 
@@ -506,6 +505,9 @@ $black: #2A192B;
   
 
     .order_wrap{
+
+        grid-template-columns: 1fr auto auto;
+        grid-template-rows: auto 1fr auto auto;
         grid-template-areas: 
         "details details details"
         "book     book   book"
@@ -547,6 +549,8 @@ $black: #2A192B;
     }
 
     .book_wrap{
+        max-height: 210px;
+
         border-bottom: none;
         & > span{
             height: 34px;
@@ -559,7 +563,9 @@ $black: #2A192B;
 
 
     .order_wrap{
-        grid-template-columns: 1fr 80px 80px;
+        
+        grid-template-columns: 1fr minmax(auto, 100px) minmax(auto, 100px);
+        grid-template-rows: auto 1fr auto auto;
         grid-template-areas: 
         "details details details"
         "book     book   book"
@@ -606,7 +612,7 @@ $black: #2A192B;
         font-size: 1rem;
      }
 
-     .x_icon > span, .counter > span{
+     .x_icon > button, .counter > span, .counter > button{
         height: 40px;
         width: 40px;
      }

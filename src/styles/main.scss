@@ -183,8 +183,13 @@ body {
         height: 15px;
         border-radius: 20px;
         color: white;
-        background-color: red;
+        background-color: $black;
         font-size: 12px;
+        transition: all 0.2s;
+    }
+
+    &.red > span {
+        background-color: red;
     }
 
     .cart_icon{

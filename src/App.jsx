@@ -14,6 +14,7 @@ import NotFoundPage from "./pages/NoFoundPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import CategoryPage from "./pages/CategoryPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <Route path="/" element={<MainLayout />}>
        <Route index element={<HomePage />} />
        <Route path="/category/:id" element={<CategoryPage/>} />
+       <Route path="/product/:id" element={<ProductDetailsPage/>} />
        <Route path="/cart" element={<CartPage />} />
        <Route path="/checkout" element={<CheckoutPage />} />
        <Route path="*" element={<NotFoundPage />} />
