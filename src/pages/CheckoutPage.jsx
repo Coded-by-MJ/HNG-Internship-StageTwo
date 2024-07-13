@@ -85,7 +85,7 @@ const CheckoutPage = () => {
   
       productsArr.length > 0 &&  updateSummary();
   
-    }, [productsArr, summaryCart])
+    }, [productsArr])
 
 
 
@@ -125,7 +125,7 @@ const CheckoutPage = () => {
                               ({product.quantityBought} Copy)
                           </span>
                           <span>
-                            #{product.price.toLocaleString()}
+                            #{(product.quantityBought * product.price).toLocaleString()}
                          </span>
                     </div>
                    ))

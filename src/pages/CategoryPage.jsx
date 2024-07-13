@@ -21,7 +21,7 @@ import Spinner from "../components/Spinner";
 const CategoryPage = () => {
   const { id } = useParams();
 
-  const { productsArr, setSize } = useData();
+  const { productsArr } = useData();
   const [filteredProducts, setFilteredProducts] = useState([])
   const [loading, setLoading] = useState(true);
 

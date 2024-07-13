@@ -92,7 +92,7 @@ return (
    </div>
 
     <div className={styles.price}>
-     <h3>#{price.toLocaleString()}</h3>
+     <h3>#{(product.quantityBought * product.price).toLocaleString()}</h3>
    </div>
 
 </div>

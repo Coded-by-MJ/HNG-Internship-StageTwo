@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import  { Link } from "react-router-dom";
 import { useData } from "./ProductsProvider";
 
 
@@ -58,10 +58,10 @@ const increment = <div className="increment">
 
 
   return (
-    <div className="card">
-     <div  className="book_image_wrap" >
+    <div  className="card">
+     <Link to={`/product/${id}`}  className="book_image_wrap" >
             <img src={imgPath} alt={name}></img>
-       </div>
+       </Link>
 
        <div className="card_details_wrap">
         <div className="book_info">
