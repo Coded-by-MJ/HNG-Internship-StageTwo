@@ -1,82 +1,84 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useData } from "../components/ProductsProvider";
 
 import Header from '../components/Header'
+import CartItem from "../components/CartItem"
 import styles from "../styles/cart.module.scss"
 
 
 const CartPage = () => {
+
+
+ const  [count, setCount] = useState(0); 
+ const  [cartItems, setCartItems] = useState([]);
+ const  [totalAmount, setTotalAmount] = useState(0);
+
+
+  const { productsArr } = useData();
+   
+   
+
+  useEffect(()=>{
+   const updateCountAndAmount = () => {
+      const addedToCart = productsArr.filter(product => product.addToCart);
+      setCount(addedToCart.length);
+      setCartItems(addedToCart);
+
+
+      const total = addedToCart.reduce((acc, product) => {
+        return acc + (product.quantityBought * product.price);
+      }, 0);
+      setTotalAmount(total);
+    }
+
+
+    productsArr.length > 0 &&  updateCountAndAmount();
+
+  }, [productsArr])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
      <main className="home_main"> 
        <Header heading="My Shopping Cart" link="/" />
      
         <section className={styles.cart_wrapper}>
-           <div className={styles.order_wrap}>
+        
+           <div className={styles.order_container}>
+              
+                {
+                    cartItems.length > 0
 
-            
-            <h3 className={styles.details}>
-                Book Details
-            </h3>
-            <h3 className={styles.qty}>
-                Quantity
-            </h3>
-            <h3 className={styles.remove}>
-                Remove
-            </h3>
+                    ? cartItems.map((book) => (
+                        <CartItem  key={book.id} {...book} />
+                    ))
 
-            <h3 className={styles.txt}>
-                Price
-            </h3>
- 
-        <div className={styles.book_wrap}>
-            <div className={styles.book_info}>
-                <div className={styles.img}>
-                 <img src="/images/watch.png" alt="the last watch"></img>
-                </div>
-                
-
-                <div className={styles.info}>
-                    <h3>The Last Watch</h3>
-                    <span>by J. S. Dewes</span>
-                    <h4>Hard Cover</h4>
-                    <span>Genre: Adventure</span>
-                </div>
+                    : <h3>Your Cart is Empty</h3>
+                }
 
             </div>
 
-            <span>
-                # 1 Best Seller
-            </span>
 
-        </div>
+   {  cartItems.length > 0 && 
 
-           <div className={styles.counter}>
-             <span className={styles.hl}>+</span>
-             <span>1</span>
-             <span className={styles.hl}>-</span>
-           </div>
-           
-           <div className={styles.x_icon}>
-             <span>X</span>
-           </div>
-
-            <div className={styles.price}>
-             <h3>#15,000</h3>
-           </div>
-
-           
-
-
-      </div>
-           
-
-
-
-
-
-
-
-
+        <>
             <div className={styles.price_wrapper}>
                 <div className={styles.btn}>
                     <span>Discount</span>
@@ -95,7 +97,7 @@ const CartPage = () => {
                <div className={styles.btn}>
                     <span>Subtotal</span>
                     <span className={styles.num}>
-                        #15,000
+                    #{totalAmount.toLocaleString()}
                     </span>
                 </div>
 
@@ -103,11 +105,12 @@ const CartPage = () => {
            <div className={styles.btn}>
                     <span>Total</span>
                     <span className={styles.num}>
-                        #15,000
+                        #{totalAmount.toLocaleString()}
                     </span>
                 </div>
-
+               
             </div>
+          
 
             <div className={styles.cart_footer}>
                 <label htmlFor='discount'>
@@ -128,7 +131,7 @@ const CartPage = () => {
                          </button>
                     </div>
 
-                        <span>Items: 1</span> 
+                        <span>Items: {count}</span> 
 
                   <div className={styles.action_btns}>
                     <Link to="/checkout"
@@ -147,7 +150,11 @@ const CartPage = () => {
                 </div>
 
               
-            </div>
+            </div>  
+         </>
+        }
+
+
         </section>
      
      </main>

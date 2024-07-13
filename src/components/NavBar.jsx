@@ -1,10 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import svg from "../assets/brandLogo.svg";
 import { PiShoppingCartLight } from "react-icons/pi";
 import  { GoSearch } from "react-icons/go";
-
+import { useData } from "./ProductsProvider";
 
 
 
@@ -13,9 +13,17 @@ import  { GoSearch } from "react-icons/go";
 const MobileMenu = () => {
  const [navisOpen, setNavisOpen] = useState(false);
 
+
  const linkClass = ({ isActive }) =>{
   return isActive ? "active" : "";
 }
+
+
+
+   
+
+
+
 
   
   return (
@@ -51,10 +59,31 @@ const NavBar = () => {
 
   const [searchVal, setSearchVal] = useState('');
 
+  const  [count, setCount] = useState(0)
 
-  const linkClass = ({ isActive }) =>{
-       return isActive ? "active" : "";
-  }
+
+  const { productsArr } = useData();
+   
+   
+
+  useEffect(()=>{
+   const updateCount = () => {
+      const addedToCart = productsArr.filter(product => product.addToCart);
+      setCount(addedToCart.length);
+    }
+
+
+    productsArr.length > 0 &&  updateCount();
+
+  }, [productsArr])
+
+
+
+
+
+
+
+
 
 
 
@@ -108,7 +137,7 @@ const NavBar = () => {
            className="nav_cart">
           <PiShoppingCartLight  className="cart_icon"/>
           <span>
-            1
+           {count}
           </span>
           </Link>
           

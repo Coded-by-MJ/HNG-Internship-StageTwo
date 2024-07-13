@@ -47,20 +47,35 @@ const getGenre = (id) => {
 
 // Data provider component
 const ProductsProvider = ({ children }) => {
-    const [productsArr, setProductsArr] = useState(false);
+
+  const [productsArr, setProductsArr] = useState([]);
+ 
+  const updateProductProperty = (productId, property, value) => {
+     setProductsArr(prevProducts => 
+      prevProducts.map(product => 
+        product.id === productId ? { ...product, [property]: value } : product
+      )
+    );
+  };
 
 
-   const [page, setPage] = useState(1);
-   const [size, setSize] = useState(10);
-   const [cartStatus, setCartStatus] = useState(false); 
-   const [qtyBought, setQtyBought] = useState(0);
+
+  const resetAll = () => {
+    setProductsArr(prevProducts =>
+      prevProducts.map(product => ({
+        ...product,
+        quantityBought: 0,
+        addToCart: false
+      }))
+    );
+  };
 
 
 
    
 
     useEffect(() => {
-    const url = `?organization_id=f2234955888247289ada87c57259fbc1&Appid=YJKVU0ZHAB467OX&Apikey=e833284ad83143cf87c2c2054fd70ec020240712142027298676&page=${page}&size=${size}`;
+    const url = `?organization_id=f2234955888247289ada87c57259fbc1&Appid=YJKVU0ZHAB467OX&Apikey=e833284ad83143cf87c2c2054fd70ec020240712142027298676`;
         const fetchProducts = async () => {
           
           try { 
@@ -71,8 +86,8 @@ const ProductsProvider = ({ children }) => {
             const modifiedItems = data.items.map(item => ({
                ...item,
                author: books[item.name].author,
-               quantityBought: qtyBought,
-               addToCart: cartStatus,
+               quantityBought: 0,
+               addToCart: false,
                imgPath: `https://api.timbu.cloud/images/${item.photos[0].url}`,
                price: 15000,
                genre: books[item.name].genre,
@@ -92,14 +107,13 @@ const ProductsProvider = ({ children }) => {
         };
         fetchProducts();    
 
-    },[page, size])
+    },[])
 
 
   
  //productsArray, setProductsArray,
   return (
-    <DataContext.Provider value={{ productsArr, setProductsArr, page, setPage,
-     size, setSize, qtyBought, setQtyBought, cartStatus, setCartStatus }}>
+    <DataContext.Provider value={{ productsArr, setProductsArr, updateProductProperty, resetAll}}>
       {children}
     </DataContext.Provider>
   );

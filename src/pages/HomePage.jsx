@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState } from "react";
 
 import Header from "../components/Header"
 import ProductCard from "../components/ProductCard";
@@ -29,13 +29,29 @@ import  "../styles/homepage.scss";
 
 const HomePage = () => {
 
-    const data = useData();
+  const { productsArr } = useData();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   
-    useEffect(() => {
-      data.setSize(10);
-  }, []); 
-    
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, productsArr.length);
+  const currentItems = productsArr.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(productsArr.length / itemsPerPage);
+
+
+
+  
+
+
+
+
+
 
   return (
   
@@ -45,13 +61,13 @@ const HomePage = () => {
        <section className="products_wrapper">
             
         {  
-          !data.productsArr
+          productsArr.length === 0 
     
           ? <div className="spinner">
                      <Spinner />
             </div> 
 
-          : data.productsArr.map((book) => (
+          : currentItems.map((book) => (
               <ProductCard key={book.id} {...book} />
              ))
     
@@ -63,16 +79,17 @@ const HomePage = () => {
 
 
          <div className="pagination_wrap"> 
-          {[1, 2, 3].map((pageNum) => (
-          <button
-           key={pageNum}
-           className={data.page === pageNum ? 'active' : ''}
-           value={pageNum}
-           onClick={(e) => data.setPage(parseInt(e.target.value))}
-           >
-           {pageNum}
-         </button>
-         ))}
+        
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button 
+                key={index + 1} 
+                className={currentPage === index + 1 ? 'active' : ''}
+                onClick={() => handlePageChange(index + 1)}
+                disabled={currentPage === index + 1}
+              >
+                {index + 1}
+              </button>
+            ))}
 
          </div>
       

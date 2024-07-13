@@ -72,6 +72,9 @@ $x-width: calc($hamburger-height * 1.41421356237);
     margin: 0;
 }
 
+html{
+    scroll-behavior: smooth;
+}
 
 
 body {

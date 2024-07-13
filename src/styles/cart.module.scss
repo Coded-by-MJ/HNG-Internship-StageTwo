@@ -96,6 +96,9 @@ $black: #2A192B;
     .btn .num{
         @extend %laila;
         font-size: 1.5rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    
     }
 
 
@@ -306,26 +309,26 @@ $black: #2A192B;
   gap: 0;
   
 
-  & > span{
+  & > span, & > button{
     @extend %laila;
     @extend %baseFlex;
     gap: 0;
     color: $black;
-      border: 1px solid $gray;
-      
-      font-size: 1.5rem;
-      width: 48px;
-      height: 48px;
-      padding: 10px;
+    border: 1px solid $gray;
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    padding: 10px;
   }
 
-  & > span.hl{
+  .hl{
+     @extend %baseBtn;
      background-color: $secondary;
      border-radius: 0 2px;
     
   }
 
-  span.hl:nth-child(1){
+   .hl:nth-child(1){
     border-radius: 2px 0;
   }
 }
@@ -341,9 +344,10 @@ $black: #2A192B;
     border-top: 1px solid $gray;
     
   
-    & > span{
+    & > button{
       @extend %laila;
       @extend %baseFlex;
+      @extend %baseBtn;
       gap: 0;
       border: 1px solid $gray;
       font-size: 1.5rem;
@@ -463,10 +467,28 @@ $black: #2A192B;
         @extend %koda;
         font-size: 1rem;
         color: $black;
+        text-transform: capitalize;
     }
 
 
 }
+
+
+.order_container{
+    width: 100%;
+    @extend %baseFlex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    max-height: 620px;
+    overflow-y: auto;
+}
+
+
+
+
+
 
 
 

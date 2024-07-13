@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from '../components/Header'
 import  '../styles/checkoutpage.scss'
 import { SlArrowDown } from "react-icons/sl";
 import credit from '../assets/creditcard.svg';
-
+import { useData } from "../components/ProductsProvider";
 
 
 
@@ -59,9 +59,42 @@ const SuccessModal = () => {
 
 
 
-
 const CheckoutPage = () => {
     const [ showModal, setShowModal ] = useState(false);
+
+    const  [totalAmount, setTotalAmount] = useState(0);
+    const [summaryCart, setSummaryCart] = useState([])
+
+
+    const { productsArr, resetAll } = useData();
+     
+     
+  
+    useEffect(()=>{
+     const updateSummary = () => {
+        setSummaryCart(productsArr.filter(product => product.addToCart));
+
+        const total = summaryCart.reduce((acc, product) => {
+          return acc + (product.quantityBought * product.price);
+        }, 0);
+        setTotalAmount(total);
+      }
+  
+  
+      productsArr.length > 0 &&  updateSummary();
+  
+    }, [productsArr, summaryCart])
+
+
+
+ 
+  const handlePay = () => {
+     resetAll();
+     setShowModal(true);
+  }
+
+
+
 
 
 
@@ -78,15 +111,24 @@ const CheckoutPage = () => {
                  <Link to="/cart">Edit Cart</Link>
               </div> 
               <div className="item">
-                <div className="sm-item">
-                  <span>The Last Watch Novel 
-                  (1 Copy)
-                  </span>
-                  <span>
-                     #15,000
-                  </span>
 
-                </div>
+                {
+                   summaryCart.length > 0 && 
+
+                   summaryCart.map((product) => (
+
+                    <div key={product.id} className="sm-item"> 
+                          <span>
+                              {product.name}
+                              ({product.quantityBought} Copy)
+                          </span>
+                          <span>
+                            #{product.price.toLocaleString()}
+                         </span>
+                    </div>
+                   ))
+
+                }
                 
                 <div className="sm-item">
                   <span>
@@ -111,7 +153,7 @@ const CheckoutPage = () => {
               </div> 
               <div className="item">
                 <span>Order Total</span>
-                <span>#15,000</span>
+                <span>#{totalAmount.toLocaleString()}</span>
                 
               </div>
             </div>
@@ -283,10 +325,10 @@ const CheckoutPage = () => {
 
                <button 
                className="pay_btn addCart"
-               onClick={() => setShowModal(true)}
+               onClick={handlePay}
                
                >
-                    Pay #15,000
+                    Pay #{totalAmount.toLocaleString()}
                </button>
             </div>
           
